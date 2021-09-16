@@ -87,14 +87,14 @@ class Client extends EventEmitter {
     }
 
     setChannel(channel) {
-      if (this.channel == undefined) {
-        this.channel = channel;
-      } else {
-        this.socket.emit("joinRoom", {
-            roomName: channel,
-            ID: channel,
-        });
-      }
+        if (this.channel == undefined) {
+            this.channel = channel;
+        } else {
+            this.socket.emit("joinRoom", {
+                roomName: channel,
+                ID: channel,
+            });
+        }
     }
 
     sendPing() {
@@ -232,6 +232,31 @@ class Client extends EventEmitter {
         };
 
         this.emit("msg", msg);
+    }
+
+    flushNoteBuffer() {
+        if (this.noteBuffer.length == 0) {
+            this.noteBuffer = [];
+            this.noteBufferTime = Date.now();
+            return;
+        }
+
+        var t = Date.now() + this.serverTimeOffset;
+        var n = this.noteBuffer;
+        var id = this.socketID;
+        var uuid = this.clientID;
+        var color = this.collor;
+        var msg = {
+            t,
+            n,
+            id,
+            uuid,
+            color
+        };
+        this.midiChannel.publish(msg);
+
+        this.noteBuffer = [];
+        this.noteBufferTime = Date.now();
     }
 
     handleMidi(data) {
