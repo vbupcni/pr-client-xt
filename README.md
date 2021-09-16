@@ -1,5 +1,5 @@
 
-# Foobar
+# pr-client-xt
 
 pr-client-xt is a custom made client used to connect to https://www.pianorhythm.me/
 ## Installation
