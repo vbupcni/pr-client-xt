@@ -138,13 +138,13 @@ class Client extends EventEmitter {
     }
 
     addNote(note, velocity = 100, dd = 0) {
-        if (note < U.A0 || note > U.C8) {
+        if (note < Util.A0 || note > Util.C8) {
             console.log("Error: Invalid note or note not in range.");
         }
 
         var onOff = velocity > 0;
         var d = Date.now() - this.noteBufferTime + dd;
-        var n = U.noteToStr(note);
+        var n = Util.noteToStr(note);
         var s = 1;
         var v = velocity;
         var inst = "high_quality_acoustic_grand_piano";
@@ -266,7 +266,7 @@ class Client extends EventEmitter {
                     clientID: data.uuid,
                     socketID: data.id,
                     color: "#FF2D00",
-                    note: U.strToNote(e.n),
+                    note: Util.strToNote(e.n),
                     noteName: e.n,
                     velocity: e.v,
                     stop: e.s,
