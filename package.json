@@ -1,0 +1,15 @@
+{
+  "name": "pr-client-xt",
+  "version": "0.0.0",
+  "description": "pr-client-xt is a custom made client used to connect to https://www.pianorhythm.me/",
+  "main": "pr-client-xt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vbupcni",
+  "license": "MIT",
+  "dependencies": {
+    "eventemitter3": "^4.0.0",
+    "socketcluster-client": "^14.3.1"
+  }
+}
